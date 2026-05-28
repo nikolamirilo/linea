@@ -60,12 +60,12 @@ modules:
           deadline) or low-importance ("nice to have", "eventually").
         - **issueType**: one of bug, feature, improvement, question, ask, spike, task.
 
-        Ask the user one clarifying question if the selection is ambiguous —
+        Ask the user one clarifying question if the selection is ambiguous -
         otherwise produce the draft directly. When the user approves the draft,
         call the createLinearIssue action with the drafted fields and the teamKey
         they specify (if known). Return the created issue's URL to the user.
 
-        Be terse. This is a productivity tool — users want one or two refinement
+        Be terse. This is a productivity tool - users want one or two refinement
         turns, not a lecture.
       conversationStarters:
         - Draft a Linear issue from the text I highlighted

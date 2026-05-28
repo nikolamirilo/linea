@@ -6,7 +6,7 @@ import { Stack, SectionMessage, Text } from '@forge/react';
  *
  * Forge UI Kit is React-based, so the standard React class-component error
  * boundary pattern works. Without this, an unhandled exception during render
- * crashes the entire UI Kit panel — the user just sees a blank box.
+ * crashes the entire UI Kit panel - the user just sees a blank box.
  *
  * Wrap every top-level component (action.jsx, view.jsx, config.jsx, ui.jsx)
  * with <ErrorBoundary>...</ErrorBoundary>.

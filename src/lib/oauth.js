@@ -118,7 +118,7 @@ async function handleCallback(code, state) {
  *
  * Clears all per-site cached data so that reconnecting to a different Linear
  * workspace does not surface stale issues, teams, projects, or label metadata.
- * Best-effort — individual delete failures are swallowed so a partial failure
+ * Best-effort - individual delete failures are swallowed so a partial failure
  * does not leave the user unable to reconnect.
  */
 async function disconnectWorkspace(siteId) {
@@ -137,7 +137,7 @@ async function disconnectWorkspace(siteId) {
   }
 
   // Prefixed caches we populate per teamId / per identifier / per usage-month.
-  // Forge `storage.query()` is best-effort here — older runtimes or test mocks
+  // Forge `storage.query()` is best-effort here - older runtimes or test mocks
   // may not implement it, so we degrade gracefully.
   await deleteByPrefix(`issue:${siteId}:`);
   await deleteByPrefix(`projects:${siteId}:`);

@@ -61,7 +61,7 @@ exports.handler = async ({ queryParameters }) => {
       )}</strong>.<br/><br/>You can close this tab and return to the Confluence Linear Configuration page. Click "Refresh Status" there to see the confirmation.`
     );
   } catch (err) {
-    // Log only the message, never the full error object — upstream errors may
+    // Log only the message, never the full error object - upstream errors may
     // include the OAuth code, tokens, or other sensitive bits in their stack.
     console.error('OAuth callback error:', err?.message || 'unknown error');
     return htmlPage(

@@ -1,8 +1,8 @@
-# Linea — User Guide
+# Linea - User Guide
 
 Linea brings Linear into Confluence: turn a paragraph into a Linear issue,
 embed live Linear filters in pages, and render rich Linear issue cards from a
-single URL — without leaving Confluence.
+single URL - without leaving Confluence.
 
 This guide is for **end users and Confluence admins** installing Linea on their
 workspace. If you're a developer working on Linea itself, see `README.md`.
@@ -15,7 +15,7 @@ workspace. If you're a developer working on Linea itself, see `README.md`.
 |---|---|---|
 | **AI text-to-issue** | Highlight a paragraph on a Confluence page → right-click → Linea drafts a Linear issue with title, description, priority, and team | Right-click context menu on selected text |
 | **Linear Filter macro** | Embed a live, auto-refreshing list of Linear issues filtered by team, project, label, or saved view | `/Linear Filter` in the Confluence editor |
-| **Linear Link macro** | Paste a Linear issue URL and pick how it renders — inline chip, full card, or plain link | `/Linear Link` in the Confluence editor |
+| **Linear Link macro** | Paste a Linear issue URL and pick how it renders - inline chip, full card, or plain link | `/Linear Link` in the Confluence editor |
 | **Rovo Task Specialist agent** *(Confluence Standard / Premium / Enterprise only)* | Conversational refinement of issues before creation; also creates Linear issues from chat | Rovo sidebar |
 
 ---
@@ -47,12 +47,12 @@ can do it; once connected, every user on that Confluence site can use Linea.
 1. In Confluence, click **Apps** in the top navigation bar
 2. Click **Linear Configuration** (Linea's settings page)
 3. Click **Connect Linear Workspace**
-4. A Linear sign-in popup opens — sign in if needed, then click **Authorize**
+4. A Linear sign-in popup opens - sign in if needed, then click **Authorize**
 5. The popup closes and you'll see **Successfully connected** with your
    workspace name displayed
 6. Click **Refresh Status** if needed to confirm the green check
 
-That's it — Linea is now ready to use across the entire Confluence site.
+That's it - Linea is now ready to use across the entire Confluence site.
 
 ### Disconnecting
 
@@ -67,7 +67,7 @@ On the same **Linear Configuration** page, click **Disconnect**. This:
 ## Using AI text-to-issue
 
 1. Open any Confluence page
-2. **Highlight the text** that describes the work — a requirement, a bug
+2. **Highlight the text** that describes the work - a requirement, a bug
    report, a meeting decision, a chat snippet, anything
 3. Right-click the selection and choose **Create Linear issue**
 4. A modal opens with a draft:
@@ -116,9 +116,9 @@ Render a single Linear issue as an inline chip, a card, or a plain URL.
 2. Insert it; the configuration panel opens
 3. Paste a Linear issue URL (e.g. `https://linear.app/your-org/issue/ENG-123/...`)
 4. Pick the display style:
-   - **URL** — plain hyperlink
-   - **Inline** — small chip showing identifier, title, and status
-   - **Card** — full card with priority, assignee, labels, project, due date
+   - **URL** - plain hyperlink
+   - **Inline** - small chip showing identifier, title, and status
+   - **Card** - full card with priority, assignee, labels, project, due date
 5. Click **Save**
 
 > **Why use the macro instead of pasting the URL?** Atlassian's built-in smart
@@ -137,7 +137,7 @@ Render a single Linear issue as an inline chip, a card, or a plain URL.
 
 - 30-day free trial regardless of team size
 - ~10% discount for annual billing (set automatically by Atlassian)
-- All features included on every paid plan — no Pro/Premium tiers
+- All features included on every paid plan - no Pro/Premium tiers
 - Billing is handled by Atlassian alongside your other Marketplace apps
 
 ---
@@ -146,7 +146,7 @@ Render a single Linear issue as an inline chip, a card, or a plain URL.
 
 **Do users need their own Linear accounts?**
 No. Linea uses a single OAuth connection per Confluence site. The Confluence
-admin who connects sets the Linear identity — every Confluence user on that
+admin who connects sets the Linear identity - every Confluence user on that
 site sees and creates issues as that identity.
 
 **Can I connect more than one Linear workspace?**
@@ -163,10 +163,10 @@ falls back to a deterministic template-based draft otherwise. No third-party AI
 service receives your content.
 
 **Where is my data stored?**
-- **Linear OAuth tokens** — encrypted at rest in Atlassian Forge secret storage
-- **Cached Linear metadata** (teams, labels, recent issues) — Atlassian Forge KVS
-- **Macro configurations** (which filter / URL each macro shows) — Atlassian Forge KVS
-- **Webhook events** — short-lived in Atlassian Forge SQL, scoped per site
+- **Linear OAuth tokens** - encrypted at rest in Atlassian Forge secret storage
+- **Cached Linear metadata** (teams, labels, recent issues) - Atlassian Forge KVS
+- **Macro configurations** (which filter / URL each macro shows) - Atlassian Forge KVS
+- **Webhook events** - short-lived in Atlassian Forge SQL, scoped per site
 - All data is hosted by Atlassian; nothing is sent to third-party servers
   beyond `api.linear.app`
 
@@ -185,7 +185,7 @@ counters. Issues created via Linea remain in Linear.
 | Right-click "Create Linear issue" missing | Hard-refresh the page; the action takes a moment to register after install |
 | Card shows "Linear connection expired" | Disconnect and reconnect on the **Linear Configuration** page |
 | Filter macro shows empty list | Check that the URL points to a team/view that has issues; the connected Linear identity must have access to it |
-| Pasting a Linear URL shows a generic card, not a Linea card | Use the **Linear Link macro** instead. Atlassian's built-in resolver claims raw URLs before Linea sees them — this is expected |
+| Pasting a Linear URL shows a generic card, not a Linea card | Use the **Linear Link macro** instead. Atlassian's built-in resolver claims raw URLs before Linea sees them - this is expected |
 | AI draft says "Free tier limit reached" | You've used 50 AI drafts this month on the free plan. Upgrade to a paid plan for unlimited drafts |
 
 ---

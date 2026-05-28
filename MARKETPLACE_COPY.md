@@ -1,4 +1,4 @@
-# Marketplace Listing Copy — Linea
+# Marketplace Listing Copy - Linea
 
 Source-of-truth copy for the Atlassian Marketplace listing fields. Paste into
 the corresponding fields in the listing form. Review and edit anything that
@@ -9,7 +9,7 @@ doesn't match Reactify Solutions' voice before submitting.
 ## App name (required, ≤60 chars)
 
 ```
-Linea — Linear for Confluence
+Linea - Linear for Confluence
 ```
 
 (28 chars; well under the 60 limit. The em dash is intentional and renders
@@ -22,9 +22,9 @@ Linea: Linear for Confluence
 
 ---
 
-## Tagline / short description (≤160 chars) — Task #29
+## Tagline / short description (≤160 chars) - Task #29
 
-**Option A (recommended — leads with the AI hook):**
+**Option A (recommended - leads with the AI hook):**
 ```
 Turn highlighted Confluence text into Linear issues with AI. Embed live filtered Linear lists. Render rich Linear cards from any URL. One-click setup.
 ```
@@ -48,15 +48,15 @@ click setup" closes the trust gap for buyers comparing alternatives.
 
 ---
 
-## Long description (Markdown) — Task #30
+## Long description (Markdown) - Task #30
 
 Paste this into the **Description** / **About this app** field. Marketplace
 renders standard Markdown.
 
 ```markdown
 **Linea brings your Linear workspace into Confluence.** Highlight a paragraph,
-right-click, and Linea drafts a well-formed Linear issue — title, description,
-priority, team, type — all in seconds. Embed live filtered Linear issue lists
+right-click, and Linea drafts a well-formed Linear issue - title, description,
+priority, team, type - all in seconds. Embed live filtered Linear issue lists
 on any page. Render any Linear URL as a rich card, an inline chip, or a plain
 link. One Linear connection per Confluence site, full feature access, simple
 per-user pricing.
@@ -64,8 +64,8 @@ per-user pricing.
 ## What you get
 
 ### AI text-to-issue
-Highlight any text on a Confluence page — a requirement, a bug report, a
-meeting decision — right-click, choose **Create Linear issue**, and Linea
+Highlight any text on a Confluence page - a requirement, a bug report, a
+meeting decision - right-click, choose **Create Linear issue**, and Linea
 opens a pre-filled draft. Edit anything and click **Create**. The issue
 lands in Linear in one click. On Confluence Standard / Premium / Enterprise,
 the **Refine with Rovo AI** button opens the Linea Task Specialist agent
@@ -75,8 +75,8 @@ for conversational refinement before creation.
 Type `/Linear Filter` in any Confluence page and pick a preset (**Active
 issues**, **Backlog**, **All issues**, **My issues**) or paste any Linear
 team or saved-view URL. The macro renders a live, auto-refreshing table.
-Toggle which columns show — ID, status, title, assignee, priority, labels,
-project, due date — and the macro remembers per-page. Updates in Linear are
+Toggle which columns show - ID, status, title, assignee, priority, labels,
+project, due date - and the macro remembers per-page. Updates in Linear are
 reflected within seconds via webhook.
 
 ### Linear Link macro
@@ -95,7 +95,7 @@ in the source text, and returns the created issue's URL on completion.
 ## Pricing
 
 - **Free** for teams of 10 users or fewer
-- **$2.00 / user / month** above 10 users — flat rate, every paid tier
+- **$2.00 / user / month** above 10 users - flat rate, every paid tier
 - 30-day free trial regardless of team size
 - Annual discount applied automatically by Atlassian
 - All features included on every paid plan; no Pro/Premium tiers
@@ -105,7 +105,7 @@ in the source text, and returns the created issue's URL on completion.
 1. Install Linea from the Marketplace
 2. Open Confluence → **Apps → Linear Configuration**
 3. Click **Connect Linear Workspace** and approve the Linear OAuth prompt
-4. Done — every Confluence user on the site can now use every Linea feature
+4. Done - every Confluence user on the site can now use every Linea feature
 
 One Linear connection covers the whole Confluence site. No per-user setup,
 no API keys to share.
@@ -122,7 +122,7 @@ Linear API itself.
 - Confluence content is **only** sent to Linear when a user explicitly
   highlights text and clicks **Create Linear issue**
 - AI drafting uses Atlassian's Rovo platform when available and a deterministic
-  template-based fallback otherwise — **no third-party AI service** receives your content
+  template-based fallback otherwise - **no third-party AI service** receives your content
 - Uninstalling Linea automatically clears all per-site data via the Forge
   uninstall lifecycle event (GDPR right-to-erasure)
 - All inbound Linear webhooks are HMAC-SHA256 verified with constant-time comparison
@@ -160,11 +160,11 @@ Built and maintained by **Reactify Solutions**.
 
 Atlassian Marketplace allows multiple categories. Pick:
 
-1. **Integrations** — primary; this is what Linea fundamentally is
-2. **Project management** — secondary; aligns with how customers search for it
-3. **IT & helpdesk** *(optional)* — captures the bug-report-from-Confluence use case
+1. **Integrations** - primary; this is what Linea fundamentally is
+2. **Project management** - secondary; aligns with how customers search for it
+3. **IT & helpdesk** *(optional)* - captures the bug-report-from-Confluence use case
 
-Skip *Macros* unless the form specifically asks for it — Marketplace doesn't
+Skip *Macros* unless the form specifically asks for it - Marketplace doesn't
 treat Macros as a top-level category for Forge apps.
 
 ---
@@ -191,14 +191,14 @@ First Marketplace release of Linea. Brings Linear into Confluence:
 - Linear Filter macro for live filtered issue lists
 - Linear Link macro for rich issue cards from any URL
 - Rovo Task Specialist agent (on Rovo-enabled Confluence editions)
-- Single-SKU pricing — full feature access for every paying customer
+- Single-SKU pricing - full feature access for every paying customer
 - Forge-native: no third-party servers, encrypted token storage, automatic
   GDPR cleanup on uninstall
 ```
 
 ---
 
-## Privacy policy URL placeholder — Task #31
+## Privacy policy URL placeholder - Task #31
 
 The listing form requires a URL. Suggested final URL:
 
@@ -210,15 +210,15 @@ Until that page is live, the form will reject submission. Two options:
 
 - **Option 1 (cleanest):** publish the page first, then create the listing
 - **Option 2 (faster):** point at a temporary URL on a static host (e.g.
-  GitHub Pages, Vercel, Netlify) — Marketplace doesn't validate the page
+  GitHub Pages, Vercel, Netlify) - Marketplace doesn't validate the page
   contents, only that the URL responds 200 at submission time
 
 A minimum-viable privacy policy for a Forge app this size is ~600 words.
-I can draft one if you want — say the word.
+I can draft one if you want - say the word.
 
 ---
 
-## Support URL placeholder — Task #32
+## Support URL placeholder - Task #32
 
 ```
 https://reactify-solutions.com/linea/support
@@ -235,7 +235,7 @@ mailto:support@reactify-solutions.com
 
 ---
 
-## EULA URL — Task #33
+## EULA URL - Task #33
 
 The fastest path is using **Atlassian's standard Marketplace EULA**:
 
@@ -244,6 +244,6 @@ https://www.atlassian.com/legal/marketplace-terms-of-use
 ```
 
 Many Marketplace listings use this directly. If you ever need vendor-specific
-terms (e.g. SLAs, support guarantees), you replace it later — but for launch,
+terms (e.g. SLAs, support guarantees), you replace it later - but for launch,
 Atlassian's standard EULA is the no-brainer choice.
 ```

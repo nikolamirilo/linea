@@ -28,7 +28,7 @@ function parseInline(text) {
       parts.push({ type: 'text', text: remaining });
       remaining = '';
     } else if (next === 0) {
-      // Marker that didn't match a known pattern — take one char and continue
+      // Marker that didn't match a known pattern - take one char and continue
       parts.push({ type: 'text', text: remaining[0] });
       remaining = remaining.slice(1);
     } else {
@@ -86,7 +86,7 @@ function parseMarkdownBlocks(md) {
         } else if (!l) {
           break;
         } else if (lines[i].match(/^\s{2,}/) && items.length > 0) {
-          // Indented continuation line — append to last item
+          // Indented continuation line - append to last item
           items[items.length - 1] += ' ' + l;
           i++;
         } else {
@@ -97,7 +97,7 @@ function parseMarkdownBlocks(md) {
       continue;
     }
 
-    // Paragraph — collect consecutive non-empty, non-structural lines
+    // Paragraph - collect consecutive non-empty, non-structural lines
     const paraLines = [];
     while (i < lines.length) {
       const l = lines[i];

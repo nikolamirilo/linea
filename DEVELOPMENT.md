@@ -1,4 +1,4 @@
-# Linea — Developer Guide
+# Linea - Developer Guide
 
 Architecture, folder structure, design principles, and contributor setup for
 the Linea Forge app. End users should refer to `USER_GUIDE.md` instead.
@@ -7,7 +7,7 @@ the Linea Forge app. End users should refer to `USER_GUIDE.md` instead.
 
 ## High-Level Architecture
 
-Linea is built on the [Atlassian Forge](https://developer.atlassian.com/platform/forge/) platform and follows its module-based architecture. The app runs entirely on Forge's serverless runtime — there is no separate backend server.
+Linea is built on the [Atlassian Forge](https://developer.atlassian.com/platform/forge/) platform and follows its module-based architecture. The app runs entirely on Forge's serverless runtime - there is no separate backend server.
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
@@ -46,11 +46,11 @@ Linea is built on the [Atlassian Forge](https://developer.atlassian.com/platform
 
 ### Data flow
 
-1. **UI Layer** — React components rendered with `@forge/react` in Forge's UI Kit. Each module has a slim orchestrator component that composes shared components and hooks.
-2. **Bridge Layer** — UI components call backend resolvers via `invoke()` from `@forge/bridge`. This is the boundary between frontend and backend in Forge.
-3. **Resolver Layer** — `@forge/resolver` endpoints handle business logic: loading/saving config, querying Linear, drafting issues, etc.
-4. **Library Layer** — Shared utilities for Linear API communication (GraphQL client, token management), caching (KVS + SQL), OAuth, AI drafting, input validation, and licensing.
-5. **External API** — All Linear data comes from the [Linear GraphQL API](https://developers.linear.app/docs/graphql/working-with-the-graphql-api).
+1. **UI Layer** - React components rendered with `@forge/react` in Forge's UI Kit. Each module has a slim orchestrator component that composes shared components and hooks.
+2. **Bridge Layer** - UI components call backend resolvers via `invoke()` from `@forge/bridge`. This is the boundary between frontend and backend in Forge.
+3. **Resolver Layer** - `@forge/resolver` endpoints handle business logic: loading/saving config, querying Linear, drafting issues, etc.
+4. **Library Layer** - Shared utilities for Linear API communication (GraphQL client, token management), caching (KVS + SQL), OAuth, AI drafting, input validation, and licensing.
+5. **External API** - All Linear data comes from the [Linear GraphQL API](https://developers.linear.app/docs/graphql/working-with-the-graphql-api).
 
 ### Authentication
 
@@ -92,12 +92,12 @@ linea/
 │   └── encode-logo.js            # Encodes Linear logo to base64 data URI
 │
 ├── src/                          # Application source code
-│   ├── index.js                  # Entry point — re-exports all handlers for manifest.yml
+│   ├── index.js                  # Entry point - re-exports all handlers for manifest.yml
 │   │
 │   ├── lib/                      # Shared backend libraries
 │   │   ├── cache/                # Cache layer (split by ISP)
-│   │   │   ├── kvsCache.js       #   KVS cache — small, high-frequency items (teams, labels, issues)
-│   │   │   └── sqlCache.js       #   SQL cache — larger payloads (filter results)
+│   │   │   ├── kvsCache.js       #   KVS cache - small, high-frequency items (teams, labels, issues)
+│   │   │   └── sqlCache.js       #   SQL cache - larger payloads (filter results)
 │   │   ├── cache.js              #   Backward-compatible facade re-exporting both
 │   │   │
 │   │   ├── linear/               # Linear API layer (split by SRP)
@@ -172,22 +172,22 @@ linea/
 
 ## Module purposes
 
-### `src/lib/` — Backend Library Layer
+### `src/lib/` - Backend Library Layer
 
 | Module | Purpose |
 |--------|---------|
-| `linear/client.js` | GraphQL transport — sends authenticated requests, refreshes tokens, retries 429/5xx with backoff, throttles concurrent requests |
-| `linear/queries.js` | Query builders — all GraphQL query and mutation definitions |
-| `linear/urlParser.js` | URL parsing — converts Linear app URLs into GraphQL filters |
+| `linear/client.js` | GraphQL transport - sends authenticated requests, refreshes tokens, retries 429/5xx with backoff, throttles concurrent requests |
+| `linear/queries.js` | Query builders - all GraphQL query and mutation definitions |
+| `linear/urlParser.js` | URL parsing - converts Linear app URLs into GraphQL filters |
 | `cache/kvsCache.js` | TTL-based KVS cache for small, high-frequency data |
 | `cache/sqlCache.js` | SQL cache for larger payloads (filter result sets) |
-| `context.js` | Request context — `getSiteId`, `buildMacroKey`, `safeKeySegment` |
+| `context.js` | Request context - `getSiteId`, `buildMacroKey`, `safeKeySegment` |
 | `oauth.js` | OAuth 2.0 + PKCE flow + per-site disconnect/cleanup |
 | `rovo.js` | AI drafting (heuristic-based) + monthly usage quota |
 | `security.js` | Input validation, prompt-injection filtering, error sanitization, secret scrubbing |
 | `licensing.js` | Single-SKU license check (free vs paid) |
 
-### `src/modules/` — Feature Modules
+### `src/modules/` - Feature Modules
 
 | Module | Forge Type | User-Facing Feature |
 |--------|-----------|-------------------|
@@ -198,20 +198,20 @@ linea/
 | `textToIssue/` | `confluence:contextMenu` | Right-click selected text → AI-drafted Linear issue |
 | `rovoAgent/` | `rovo:agent` + `rovo:action` | Linea Task Specialist agent (Rovo-required) |
 
-### `src/webtriggers/` — External Callbacks
+### `src/webtriggers/` - External Callbacks
 
 | Trigger | Purpose |
 |---------|---------|
 | `oauthCallback.js` | Receives Linear OAuth redirect, exchanges code for tokens |
 | `linearWebhook.js` | Receives Linear webhook events (HMAC-SHA256 verified), invalidates caches |
 
-### `src/scheduledTrigger/` — Background Tasks
+### `src/scheduledTrigger/` - Background Tasks
 
 | Trigger | Purpose |
 |---------|---------|
 | `refreshCache.js` | Invalidates SQL cache entries older than 10 min, every 5 min |
 
-### `src/lifecycle/` — Forge Lifecycle Hooks
+### `src/lifecycle/` - Forge Lifecycle Hooks
 
 | Handler | Trigger Event | Purpose |
 |---------|---------------|---------|
@@ -223,11 +223,11 @@ linea/
 
 The codebase follows **SOLID** principles:
 
-- **Single Responsibility** — Each component, hook, and module has one reason to change.
-- **Open/Closed** — Column definitions and presets are in shared constants, making them extensible without modifying rendering code.
-- **Liskov Substitution** — All resolvers return a consistent error shape (`{ error: string }`).
-- **Interface Segregation** — `linear.js` is split into `client.js` + `queries.js`; `cache.js` is split into `kvsCache.js` + `sqlCache.js`.
-- **Dependency Inversion** — Forge context extraction is abstracted behind the `useForgeContext` hook; backend context helpers are centralized in `lib/context.js`.
+- **Single Responsibility** - Each component, hook, and module has one reason to change.
+- **Open/Closed** - Column definitions and presets are in shared constants, making them extensible without modifying rendering code.
+- **Liskov Substitution** - All resolvers return a consistent error shape (`{ error: string }`).
+- **Interface Segregation** - `linear.js` is split into `client.js` + `queries.js`; `cache.js` is split into `kvsCache.js` + `sqlCache.js`.
+- **Dependency Inversion** - Forge context extraction is abstracted behind the `useForgeContext` hook; backend context helpers are centralized in `lib/context.js`.
 
 ---
 

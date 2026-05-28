@@ -4,7 +4,7 @@ const { disconnectWorkspace } = require('../lib/oauth');
  * Forge app uninstall event handler.
  *
  * Fires when the customer removes Linea from their Confluence site. We use
- * this to clear all per-site state Linea has stored — Linear OAuth tokens,
+ * this to clear all per-site state Linea has stored - Linear OAuth tokens,
  * cached teams/labels/issues, macro configurations, and AI usage counters.
  *
  * This is the GDPR "right to erasure" path: when the customer removes the
@@ -21,7 +21,7 @@ exports.handler = async (event = {}) => {
     null;
 
   if (!cloudId) {
-    // We have no site identifier — nothing actionable. Return success so the
+    // We have no site identifier - nothing actionable. Return success so the
     // event is not retried indefinitely.
     return { success: true, cleared: false, reason: 'missing cloudId' };
   }
@@ -30,7 +30,7 @@ exports.handler = async (event = {}) => {
     await disconnectWorkspace(cloudId);
     return { success: true, cleared: true, cloudId };
   } catch (err) {
-    // Log only the message — the event payload may contain identifiers we do
+    // Log only the message - the event payload may contain identifiers we do
     // not want in operator-visible logs at full fidelity.
     console.error('Uninstall cleanup error:', err?.message || 'unknown');
     // Return success so Forge doesn't retry indefinitely; manual cleanup is

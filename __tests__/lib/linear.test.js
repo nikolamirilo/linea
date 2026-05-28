@@ -77,7 +77,7 @@ describe('Linear client', () => {
   });
 
   test('refreshes token when stored token is near expiry', async () => {
-    // Token expires in 60s — within the 5-minute refresh window.
+    // Token expires in 60s - within the 5-minute refresh window.
     storage.getSecret.mockResolvedValue({
       accessToken: 'old_token',
       refreshToken: 'rt_old',

@@ -1,9 +1,9 @@
-# Linea — Production Readiness & Marketplace Publishing Checklist
+# Linea - Production Readiness & Marketplace Publishing Checklist
 
 **Legend:**
-- 👤 **You (Nikola)** — anything that requires logging into Atlassian, Linear, or Marketplace, or making a business decision (pricing, legal text, screenshots)
-- 🤖 **Claude** — all code, config, manifest, test, and doc changes inside this repo
-- 🤝 **Both** — Claude prepares; you click the final button (deploy/install/submit)
+- 👤 **You (Nikola)** - anything that requires logging into Atlassian, Linear, or Marketplace, or making a business decision (pricing, legal text, screenshots)
+- 🤖 **Claude** - all code, config, manifest, test, and doc changes inside this repo
+- 🤝 **Both** - Claude prepares; you click the final button (deploy/install/submit)
 
 ---
 
@@ -52,7 +52,7 @@
 |---|------|----------|--------|
 | 4.1 | Register as a Marketplace vendor at https://marketplace.atlassian.com/manage/vendors | 👤 You | ☐ |
 | 4.2 | Create a **private listing** linked to the production `app.id` | 👤 You | ☐ |
-| 4.3 | App logo (square PNG, 512×512 min) — Claude can re-encode using `scripts/encode-logo.js` | 🤝 Both | ☐ |
+| 4.3 | App logo (square PNG, 512×512 min) - Claude can re-encode using `scripts/encode-logo.js` | 🤝 Both | ☐ |
 | 4.4 | Take 4 highlight screenshots: text-to-issue, Filter macro, Link card, Rovo agent | 👤 You | ☐ |
 | 4.5 | Write short description (<160 chars) | 🤖 Claude (draft) → 👤 You (approve) | ☐ |
 | 4.6 | Write long description (Markdown, feature list, what data is processed) | 🤖 Claude (draft) → 👤 You (approve) | ☐ |
@@ -84,7 +84,7 @@
 
 | # | Task | Assignee | Status |
 |---|------|----------|--------|
-| 7.1 | Submit listing for **Atlassian security review** (mandatory — expect 2–6 weeks) | 👤 You | ☐ |
+| 7.1 | Submit listing for **Atlassian security review** (mandatory - expect 2–6 weeks) | 👤 You | ☐ |
 | 7.2 | Respond to any reviewer findings (Claude fixes; you re-submit) | 🤝 Both | ☐ |
 | 7.3 | Flip listing from Private → Public after approval | 👤 You | ☐ |
 | 7.4 | Announce / share install URL | 👤 You | ☐ |
@@ -93,10 +93,10 @@
 
 ## Suggested order of attack
 
-1. **Section 2** (Security) — biggest blocker for review, all code work
-2. **Section 1** (Manifest) — needs your prod app.id from Forge console (1.1)
-3. **Section 3** (Quality) — code work
-4. **Section 5** (Docs) — code work
-5. **Section 4** (Marketplace listing) — your assets + my drafts in parallel
-6. **Section 6** (Dry run) — once code is frozen
-7. **Section 7** (Submit) — last
+1. **Section 2** (Security) - biggest blocker for review, all code work
+2. **Section 1** (Manifest) - needs your prod app.id from Forge console (1.1)
+3. **Section 3** (Quality) - code work
+4. **Section 5** (Docs) - code work
+5. **Section 4** (Marketplace listing) - your assets + my drafts in parallel
+6. **Section 6** (Dry run) - once code is frozen
+7. **Section 7** (Submit) - last

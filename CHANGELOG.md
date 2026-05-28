@@ -9,8 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - App uninstall lifecycle handler (`avi:forge:uninstalled:app`) that clears
-  all per-site Linear data — OAuth tokens, cached teams/labels/projects/issues,
-  macro configurations, AI usage counters — on uninstall. Implements GDPR
+  all per-site Linear data - OAuth tokens, cached teams/labels/projects/issues,
+  macro configurations, AI usage counters - on uninstall. Implements GDPR
   right-to-erasure.
 - Centralized error sanitizer (`sanitizeUserError`) and secret-leak detection
   (`looksLikeSecret`) in `src/lib/security.js`. Resolver error messages

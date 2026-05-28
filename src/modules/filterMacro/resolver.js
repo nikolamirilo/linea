@@ -46,7 +46,7 @@ resolver.define('saveMacroConfig', async ({ payload, context }) => {
       return { error: 'Macro config must be an object.' };
     }
 
-    // buildMacroKey applies safeKeySegment to pageId/macroId — invalid IDs are
+    // buildMacroKey applies safeKeySegment to pageId/macroId - invalid IDs are
     // replaced with safe fallbacks so a hostile UI cannot poison the keyspace.
     const key = buildMacroKey(siteId, pageId, macroId, context);
     await storage.set(key, config);

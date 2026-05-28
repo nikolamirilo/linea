@@ -1,8 +1,8 @@
 /**
- * Linea licensing — single SKU, full access for paying customers.
+ * Linea licensing - single SKU, full access for paying customers.
  *
  * Pricing model: $2/user/month, free for ≤10 users (Atlassian standard).
- * No feature differentiation between paid plans — every paying customer gets
+ * No feature differentiation between paid plans - every paying customer gets
  * everything. Free tier exists only because Atlassian Marketplace requires it
  * and to enable evaluation; it has soft limits to encourage upgrade.
  *

@@ -1,4 +1,4 @@
-// Storage-key segment validator. Forge storage keys must be safe identifiers —
+// Storage-key segment validator. Forge storage keys must be safe identifiers -
 // reject any caller-supplied value that isn't alphanumeric/dash/underscore so
 // a hostile UI cannot craft a key that collides with `linear_tokens:*` or any
 // other namespace.

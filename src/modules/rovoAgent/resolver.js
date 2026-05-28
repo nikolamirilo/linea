@@ -49,7 +49,7 @@ async function resolveTeamId(siteId, teamKey) {
   return { teamId: teams[0].id, matchedTeam: teams[0], teams };
 }
 
-// Rovo action handler — invoked by the Linear Task Specialist agent when it
+// Rovo action handler - invoked by the Linear Task Specialist agent when it
 // decides (with user approval) to create a Linear issue. Payload shape is
 // governed by the `rovo:action` module inputs in manifest.yml.
 async function rovoCreateIssueHandler(payload, context) {

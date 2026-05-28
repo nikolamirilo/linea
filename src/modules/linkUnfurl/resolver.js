@@ -10,7 +10,7 @@ const LINEAR_BRAND_ICON = 'https://linear.app/favicon.ico';
 // NOTE: graph:smartLink is registered in manifest.yml for linear.app issue URLs,
 // but in practice Atlassian's built-in Linear smart link resolver (part of the
 // Object Resolver Service) claims these URLs first and this handler is never
-// invoked. Third-party Forge apps cannot override built-in ORS providers — the
+// invoked. Third-party Forge apps cannot override built-in ORS providers - the
 // Linear Link macro (confluence:macro) is the supported path for rich Linea
 // cards on Confluence pages. The module is kept registered in case Atlassian
 // opens up precedence in the future.

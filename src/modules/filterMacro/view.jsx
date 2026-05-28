@@ -43,7 +43,7 @@ const App = () => {
     return <LoadingState message="Loading Linear Filter macro..." />;
   }
 
-  // Linear isn't connected yet (or token revoked) — show actionable state.
+  // Linear isn't connected yet (or token revoked) - show actionable state.
   if (isNotConnectedError(error)) {
     return <NotConnectedState reason={/expired|revoked/i.test(error) ? 'expired' : 'not_connected'} />;
   }
