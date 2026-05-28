@@ -1,0 +1,189 @@
+modules:
+  confluence:contextMenu:
+    - key: text-to-linear-issue
+      resource: text-to-issue-ui
+      resolver:
+        function: textToIssueResolver
+      render: native
+      title: Create Linear issue
+
+  confluence:globalPage:
+    - key: linear-config
+      resource: linear-config-ui
+      resolver:
+        function: configResolver
+      render: native
+      route: linear-config
+      title: Linea
+      icon: resource:app-icon;icon-gray-transparent-512.png
+
+  macro:
+    - key: linear-filter-macro
+      resource: filter-macro-view
+      resolver:
+        function: filterMacroResolver
+      title: Linear Filter
+      description: Embed a live list of Linear issues filtered by team, project, or label
+      render: native
+      config:
+        resource: filter-macro-config
+        render: native
+    - key: linear-link-macro
+      resource: linear-link-view
+      resolver:
+        function: linearLinkResolver
+      title: Linear Link
+      description: Embed a Linear issue as a URL, inline chip, or rich card
+      render: native
+      config:
+        resource: linear-link-config
+        render: native
+
+  rovo:agent:
+    - key: linear-task-specialist
+      name: Linea Task Specialist
+      description: Drafts well-formed Linear issues from Confluence page context.
+      prompt: |
+        You are the Linea Task Specialist, an AI assistant that turns Confluence page
+        content into well-formed Linear issues. Your job is to take a passage of text
+        (usually a requirement, bug report, discussion, or idea) and draft a Linear
+        issue that is clear, actionable, and ready to be created.
+
+        For each request, extract or infer:
+        - **title**: under 80 characters, imperative mood ("Fix X", "Add Y",
+          "Investigate Z"), no trailing period.
+        - **description**: structured Markdown. Include a one-line Context section
+          summarizing the source, and a Details or Acceptance Criteria section as
+          appropriate. Never invent facts that aren't in the source text.
+        - **priority**: one of urgent, high, normal, low, none. Default to "normal"
+          unless the text explicitly signals urgency (outage, blocker, security,
+          deadline) or low-importance ("nice to have", "eventually").
+        - **issueType**: one of bug, feature, improvement, question, ask, spike, task.
+
+        Ask the user one clarifying question if the selection is ambiguous —
+        otherwise produce the draft directly. When the user approves the draft,
+        call the createLinearIssue action with the drafted fields and the teamKey
+        they specify (if known). Return the created issue's URL to the user.
+
+        Be terse. This is a productivity tool — users want one or two refinement
+        turns, not a lecture.
+      conversationStarters:
+        - Draft a Linear issue from the text I highlighted
+        - Rewrite this as a bug report
+        - Suggest a priority and title
+      actions:
+        - create-linear-issue
+
+  action:
+    - key: create-linear-issue
+      name: Create Linear issue
+      description: Create a new issue in Linear with a title, description, priority, and team.
+      function: rovoCreateIssueFn
+      actionVerb: CREATE
+      inputs:
+        title:
+          title: Title
+          description: Issue title (imperative mood, <80 chars).
+          type: string
+          required: true
+        description:
+          title: Description
+          description: Markdown description of the issue.
+          type: string
+          required: false
+        priority:
+          title: Priority
+          description: One of "urgent", "high", "normal", "low", or "none".
+          type: string
+          required: false
+        teamKey:
+          title: Team key
+          description: The Linear team key (e.g. "ENG", "REA"). If omitted, the first available team is used.
+          type: string
+          required: false
+
+  graph:smartLink:
+    - key: linear-issue-smart-link
+      name: Linear Issue
+      icon: https://linear.app/favicon.ico
+      function: linearSmartLinkFn
+      domains:
+        - linear.app
+      subdomains: false
+      patterns:
+        - https:\/\/linear\.app\/[\w-]+\/issue\/[A-Z][A-Z0-9]*-\d+.*$
+        - https:\/\/linear\.app\/issue\/[A-Z][A-Z0-9]*-\d+.*$
+
+  function:
+    - key: textToIssueResolver
+      handler: index.textToIssueResolver
+    - key: filterMacroResolver
+      handler: index.filterMacroResolver
+    - key: linkUnfurlResolver
+      handler: index.linkUnfurlResolver
+    - key: linearSmartLinkFn
+      handler: index.linearSmartLinkFn
+    - key: linearLinkResolver
+      handler: index.linearLinkResolver
+    - key: configResolver
+      handler: index.configResolver
+    - key: oauthCallbackFn
+      handler: index.oauthCallbackFn
+    - key: linearWebhookFn
+      handler: index.linearWebhookFn
+    - key: rovoCreateIssueFn
+      handler: index.rovoCreateIssueFn
+    - key: appUninstallFn
+      handler: index.appUninstallFn
+
+  webtrigger:
+    - key: oauth-callback
+      function: oauthCallbackFn
+    - key: linear-webhook
+      function: linearWebhookFn
+
+  trigger:
+    - key: app-uninstall
+      function: appUninstallFn
+      events:
+        - avi:forge:uninstalled:app
+
+resources:
+  - key: text-to-issue-ui
+    path: src/modules/textToIssue/action.jsx
+  - key: filter-macro-view
+    path: src/modules/filterMacro/view.jsx
+  - key: filter-macro-config
+    path: src/modules/filterMacro/config.jsx
+  - key: linear-link-view
+    path: src/modules/linearLink/view.jsx
+  - key: linear-link-config
+    path: src/modules/linearLink/config.jsx
+  - key: linear-config-ui
+    path: src/modules/config/ui.jsx
+  - key: app-icon
+    path: static
+
+permissions:
+  scopes:
+    - read:confluence-content.all
+    - read:page:confluence
+    - storage:app
+  external:
+    fetch:
+      backend:
+        - address: https://api.linear.app
+          inScopeEUD: false
+
+app:
+  id: ari:cloud:ecosystem::app/da68f0db-ed8e-494b-ac92-eacb850fb959
+  runtime:
+    name: nodejs22.x
+  licensing:
+    enabled: true
+
+environment:
+  variables:
+    - LINEAR_CLIENT_ID
+    - LINEAR_CLIENT_SECRET
+    - LINEAR_WEBHOOK_SECRET
